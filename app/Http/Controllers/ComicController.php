@@ -63,7 +63,7 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        $findComic = Comic::find($id);
+        $findComic = Comic::findOrFail($id);
         $data=[
             'comic' => $findComic
         ];
@@ -78,7 +78,11 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $findComic = Comic::findOrFail($id);
+        $data=[
+            'comic'=> $findComic
+        ];
+        return view('comics.edit', $data);
     }
 
     /**
@@ -90,7 +94,10 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $findComic= Comic::findOrFail($id);
+        $formData = $request->all();
+        $findComic->update($formData);
+        return redirect()->route('comics.show', ['comic' => $findComic->id]);
     }
 
     /**
@@ -101,6 +108,8 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $findComic = Comic::findOrFail($id);
+        $findComic->delete();
+        return redirect()->route('comics.index');
     }
 }
