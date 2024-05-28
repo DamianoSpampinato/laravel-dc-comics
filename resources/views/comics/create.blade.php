@@ -5,7 +5,15 @@
         <form action="{{route('comics.store')}}" method="POST">
             @csrf
             <div >
-                
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                     <label for="title">Inserisci titolo</label>
                     <input type="text" id="title" name="title">
 
