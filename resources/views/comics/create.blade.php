@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -15,20 +15,20 @@
                 </div>
             @endif
                     <label for="title">Inserisci titolo</label>
-                    <input type="text" id="title" name="title">
+                    <input type="text" id="title" name="title"  value="{{old('title')}}">
 
                 
                     <label for="description">Inserisci descrizione</label>
-                    <input type="text" id="description" name="description">
+                    <input type="text" id="description" name="description" value="{{old('description')}}">
                 
                     <label for="price">Inserisci prezzo</label>
-                    <input type="number" id="price" name="price">
+                    <input type="number" id="price" name="price" value="{{old('price')}}">
                     <label for="thumb">Inserisci url img</label>
-                    <input type="text" id="thumb" name="thumb">
+                    <input type="text" id="thumb" name="thumb" value="{{old('thumb')}}">
                     <label for="series">Inserisci series</label>
-                    <input type="text" id="series" name="series">
+                    <input type="text" id="series" name="series" value="{{old('series')}}">
                     <label for="sale_date">Inserisci data del sale</label>
-                    <input type="date" id="sale_date" name="sale_date">
+                    <input type="date" id="sale_date" name="sale_date" value="{{old('date')}}">
                     <select name="type" id="type">
                         <option value="comic book">Comic Book</option>
                         <option value="graphic novel">Graphic Novel</option>
