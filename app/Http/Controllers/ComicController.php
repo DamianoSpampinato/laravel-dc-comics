@@ -99,6 +99,7 @@ class ComicController extends Controller
     {
         $findComic= Comic::findOrFail($id);
         $formData = $request->all();
+        $this->validation($formData);
         $findComic->update($formData);
         return redirect()->route('comics.show', ['comic' => $findComic->id]);
     }
@@ -119,7 +120,7 @@ class ComicController extends Controller
         $validator= Validator::make(
             $data, [
                 'title'=>'required|min:5|max:90',
-                'description'=>'min:5|max:250',
+                'description'=>'min:5|max:1000',
                 'price'=> 'required| max:6',
                 'thumb'=> 'max:200',
                 'series'=> 'max:50',

@@ -6,7 +6,15 @@
             @csrf
             @method('PUT')
             <div >
-                
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                     <label for="title">Inserisci titolo</label>
                     <input value="{{$comic->title}}" type="text" id="title" name="title">
 
